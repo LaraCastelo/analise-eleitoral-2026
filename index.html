@@ -173,12 +173,12 @@
 
       /* ===== ADAPTADO: zoomBox agora é o "palco" onde os gráficos ficam empilhados ===== */
       #zoomBox {
-  overflow: visible;
-  width: 100%;
-  max-width: none;
-  max-height: none !important;
-  position: relative;
-  min-height: 500px;
+        overflow: visible;
+        width: 100%;
+        max-width: none;
+        max-height: none !important;
+        position: relative;
+        min-height: 500px;
       }
 
       /* espaço reservado para o embed do Instagram, abaixo do gráfico */
@@ -263,16 +263,81 @@
         }
 
         #scrolly.side-by-side .scrolly-overlay {
-  margin-top: 70vh;
-  order: 0;
-  flex:  0 1 42%;
-  max-width: none;
-}
+          margin-top: 70vh;
+          order: 0;
+          flex: 0 1 42%;
+          max-width: none;
+        }
 
-#scrolly.side-by-side .sticky-thing {
-  order: 1;
-  flex: 0 1 58%;
-}
+        #scrolly.side-by-side .sticky-thing {
+          order: 1;
+          flex: 0 1 58%;
+        }
+      }
+
+      /* ===== AJUSTES PARA CELULAR ===== */
+      @media only screen and (max-width: 699px) {
+        h1,
+        p,
+        .byline,
+        figure,
+        footer.methodology {
+          max-width: 90% !important;
+        }
+
+        .header-image {
+          min-height: 60vh;
+        }
+
+        .header-image .content {
+          max-width: 100%;
+          padding: 0 1rem 2rem 1rem;
+        }
+
+        .header-image .content h1 {
+          font-size: 2.2rem;
+        }
+
+        .header-image .content .subhead {
+          font-size: 1.1rem;
+        }
+
+        .chart-embed {
+          max-width: 95% !important;
+        }
+
+        .chart-embed iframe {
+          width: 100% !important;
+        }
+
+        /* no celular o #scrolly não vira flex (media query de 700px não ativa),
+           então sticky-thing e scrolly-overlay empilham normalmente.
+           Aqui garantimos que cada um ocupe a largura total, sem margens de desktop. */
+        #zoomBox {
+          margin-left: 0 !important;
+          max-width: 100% !important;
+          min-height: 350px;
+        }
+
+        .sticky-thing {
+          height: auto;
+          min-height: 60vh;
+          position: relative; /* tira o sticky no celular, que costuma quebrar o layout em telas pequenas */
+        }
+
+        .scrolly-overlay {
+          margin-left: 1rem;
+          margin-right: 1rem;
+          max-width: none;
+        }
+
+        .step {
+          margin-bottom: 3rem; /* bem menos espaço vazio entre steps no celular */
+        }
+
+        .step p {
+          font-size: 1rem;
+        }
       }
     </style>
     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
